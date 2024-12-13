@@ -2,28 +2,47 @@ extends ../layout/index
 
 block contenido
     div.py-10
-        h1.text-4xl.my-10.font-extrabold.text-center.text-pigmentgreen Bienes 
+        h1.text-4xl.my-10.font-foco.text-center.text-darkblue Bienes 
             span.font-normal.text-black Raíces  
-        h2.text-center.text-2xl.font-extrabold= pagina
+        h2.text-center.text-2xl.font-foco= pagina
 
-        if errores 
-            div(class="max-w-md mx-auto my-10")
-                each error in errores
-                    p.bg-red-600.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold= error.msg
+        if errores
+            div(class="max-w-md mx-auto my-6 space-y-3")
+                each error, index in errores
+                    div(
+                        id=`alert-${index}`
+                        class="flex items-center p-3 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 transition ease-in-out duration-500 transform opacity-100 scale-100 shadow-sm"
+                    )
+                        svg(class="w-5 h-5 text-red-600 mr-3", xmlns="http://www.w3.org/2000/svg", fill="none", viewBox="0 0 24 24", stroke="currentColor", "stroke-width"="2")
+                            path("stroke-linecap"="round", "stroke-linejoin"="round", d="M6 18L18 6M6 6l12 12")
+                        p.text-sm.flex-1= error.msg
+                        button(
+                            class="ml-3 text-gray-500 hover:text-gray-700 focus:outline-none"
+                            onclick=`document.getElementById('alert-${index}').classList.add('opacity-0', 'scale-90'); setTimeout(() => document.getElementById('alert-${index}').remove(), 500)`
+                        ) 
+                            | ×
+                    script.
+                        setTimeout(() => {
+                            const alert = document.getElementById('alert-${index}');
+                            if (alert) {
+                                alert.classList.add('opacity-0', 'scale-90');
+                                setTimeout(() => alert.remove(), 500);
+                            }
+                        }, 1000);
 
         .mt-8.mx-auto.max-w-md 
             .bg-white.py-8.px-4.shadow
                 form.space-y-5( method="POST" action="/auth/login") 
                     input(type="hidden" name="_csrf" value= csrfToken)
                     div 
-                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="email") Email
+                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="email") Email
                         input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Escribe tu email" type="email" name="email") 
                     div 
-                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="password") Password
-                        input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Escribe tu password" type="password" name="password")             
+                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="password") Password
+                        input#password.w-full.px-3.py-2.border.border-babyblue.rounded-md.placeholder-gray-400(placeholder="Escribe tu password" type="password" name="password")             
                     div.flex.items-center.justify-between 
-                        a.text-gray-500.text-xs(href="/auth/registro") ¿No tienes cuenta? Crea una
-                        a.text-gray-500.text-xs(href="/auth/olvide-password") Olvide mi Password
+                        a.text-gray-500.text-xs.font-foco(href="/auth/registro") ¿No tienes cuenta? Crea una
+                        a.text-gray-500.text-xs.font-foco(href="/auth/olvide-password") Olvide mi Password
 
 
-                    input(class="w-full bg-emerald-100 hover:bg-celadon-50 text-black font-bold py-3 cursor-pointer" type="submit" value="Inicar Sesión")    
+                    input(class="w-full transition ease-in-out delay-150 bg-darkblue hover:-translate-y-1 hover:scale-105 hover:bg-babyblue duration-300 text-white font-bold py-3 rounded-lg cursor-pointer transition duration-300" type="submit" value="Iniciar sesión")    

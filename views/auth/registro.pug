@@ -2,92 +2,59 @@ extends ../layout/index
 
 block contenido
     div.py-10
-        h1.text-center.font-extrabold.my-10.text-4xl.text-pigmentgreen Bienes 
+        h1.text-center.font-foco.my-10.text-4xl.text-darkblue Bienes 
             span.font-normal.text-black Raíces
-        h2.text-center.font-extrabold.text-2xl= page
+        h2.text-center.font-rubi.text-2xl.text-black= page
 
         if errores
-            div(class="max-w-md mx-auto my-10")
-                each error in errores
-                    div(class="bg-redd text-white p-4 rounded-md flex items-center justify-between mb-2 alert fade-in")
-                        // Iconos según tipo de error
-                        if error.msg == "El nombre no puede ir vacío"
-                            i(class="fas fa-user-times mr-2")  
-                        else if error.msg == "El correo electrónico es un campo obligatorio"
-                            i(class="fas fa-envelope-open-text mr-2")  
-                        else if error.msg == "El correo electrónico no tiene el formato correcto"
-                            i(class="fas fa-exclamation-triangle mr-2")
-                        else if error.msg == "La contraseña es un campo obligatorio"
-                            i(class="fas fa-key mr-2")  
-                        else if error.msg == "El Password debe ser de al menos 8 caracteres"
-                            i(class="fas fa-lock mr-2")
-                        else if error.msg == "La contraseña debe coincidir con la anterior"
-                            i(class="fas fa-lock mr-2")  
-                        else if error.msg == "La fecha de nacimiento es obligatoria"
-                            i(class="fas fa-calendar-alt mr-2")
-                        else if error.msg == "Debes ser mayor de 18 años para registrarte"
-                            i(class="fas fa-exclamation-circle mr-2")
-                        p(class="text-sm font-bold")= error.msg
-                        button(class="ml-2 bg-transparent border-0 text-white" onclick="this.parentElement.style.display='none'") &times;
+            div(class="max-w-md mx-auto my-6 space-y-3")
+                each error, index in errores
+                    div(
+                        id=`alert-${index}`
+                        class="flex items-center p-3 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 transition ease-in-out duration-500 transform opacity-100 scale-100 shadow-sm"
+                    )
+                        svg(class="w-5 h-5 text-red-600 mr-3", xmlns="http://www.w3.org/2000/svg", fill="none", viewBox="0 0 24 24", stroke="currentColor", "stroke-width"="2")
+                            path("stroke-linecap"="round", "stroke-linejoin"="round", d="M6 18L18 6M6 6l12 12")
+                        p.text-sm.flex-1= error.msg
+                        button(
+                            class="ml-3 text-gray-500 hover:text-gray-700 focus:outline-none"
+                            onclick=`document.getElementById('alert-${index}').classList.add('opacity-0', 'scale-90'); setTimeout(() => document.getElementById('alert-${index}').remove(), 500)`
+                        ) 
+                            | ×
+                    script.
+                        setTimeout(() => {
+                            const alert = document.getElementById('alert-${index}');
+                            if (alert) {
+                                alert.classList.add('opacity-0', 'scale-90');
+                                setTimeout(() => alert.remove(), 500);
+                            }
+                        }, 1000);
 
         .mt-8.mx-auto.max-w-md
             .bg-white.py-8.px-4.shadow
                 form(method="POST" action="/auth/registro" noValidate).space-y-5.px-6
                     input(type="hidden" name="_csrf" value= csrfToken)
                     div
-                        label.block.text-sm.uppercase.text-black.mb-2.font-bold Nombre Completo: 
+                        label.block.text-sm.uppercase.text-black.mb-2.font-foco Nombre Completo: 
                         input#name.w-full.px-3.py-2.border-2.border-black.rounded-md(type="text" placeholder="Ej. Juanito Peréz" name="nombre" value=(usuario && usuario.nombre ? usuario.nombre : ""))
                     div
-                        label.block.text-sm.uppercase.text-black.mb-2.font-bold Alias: 
+                        label.block.text-sm.uppercase.text-black.mb-2.font-foco User: 
                         input#alias.w-full.px-3.py-2.border-2.border-black.rounded-md(type="text" placeholder="Ej. juanperez123" name="alias" value=(usuario && usuario.alias ? usuario.alias : ""))
                     div
-                        label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Email de Registro: 
+                        label.block.text-sm.uppercase.text-gray-500.mb-2.font-foco Email de Registro: 
                         input#email.w-full.px-3.py-2.border-2.border-black.rounded-md(type="email" placeholder="Ej. usuario@paisdelasmaravillas.com" name="email" value=(usuario && usuario.email ? usuario.email : ""))
                     div
-                        label.block.text-sm.uppercase.text-black.mb-2.font-bold Fecha de Nacimiento: 
+                        label.block.text-sm.uppercase.text-black.mb-2.font-foco Fecha de Nacimiento: 
                         input#birthdate.w-full.px-3.py-2.border-2.border-black.rounded-md(type="date" name="fecha_nacimiento" value=(usuario && usuario.fecha_nacimiento ? usuario.fecha_nacimiento : ""))
                     div
-                        label.block.text-sm.uppercase.text-black.mb-2.font-bold Contraseña: 
+                        label.block.text-sm.uppercase.text-black.mb-2.font-foco Contraseña: 
                         input#password.w-full.px-3.py-2.border-2.border-black.rounded-md(type="password" placeholder="Minimo de 8 caracteres" name="password")
                     div
-                        label.block.text-sm.uppercase.text-black.mb-2.font-bold Confirmar Contraseña: 
+                        label.block.text-sm.uppercase.text-black.mb-2.font-foco Confirmar Contraseña: 
                         input#password2.w-full.px-3.py-2.border-2.border-black.rounded-md(type="password" placeholder="Minimo de 8 caracteres" name="repetir_password")
                     div.flex.items-center.justify-between
-                        a.text-gray-500.text-xs(href="/auth/login" class="hover:underline decoration-2 hover:decoration-azulrey") ¿Ya tienes cuenta? Inicia Sesión
-                        a.text-gray-500.text-xs(href="/auth/olvide-password" class="hover:underline decoration-2 hover:decoration-azulrey") Recuperar Contraseña
-                    input(class="w-full bg-pigmentgreen hover:bg-celadon-50 text-black font-bold py-3 cursor-pointer" type="submit" value="Crear Cuenta")
+                        a.text-gray-500.text-xs.font-foco(href="/auth/login" class="hover:underline decoration-2 hover:decoration-darkblue") ¿Ya tienes cuenta? Inicia Sesión
+                        a.text-gray-500.text-xs.font-foco(href="/auth/olvide-password" class="hover:underline decoration-2 hover:decoration-darkblue") Recuperar Contraseña
+                    input(class="w-full transition ease-in-out delay-150 bg-darkblue hover:-translate-y-1 hover:scale-105 hover:bg-babyblue duration-300 text-white font-bold py-3 rounded-lg cursor-pointer transition duration-300" type="submit" value="Crear cuenta")    
 
-    script.
-        document.querySelectorAll('.alert').forEach(error => {
-            setTimeout(() => {
-                error.classList.add('fade-out');  
-                setTimeout(() => {
-                    error.style.display = 'none';
-                }, 1000);  
-            }, 7000);  
-        });
 
-    style.
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        .fade-out {
-            animation: fadeOut 1s ease-in-out;
-        }
-
-        .alert:hover {
-            transform: translateX(10px);  
-            cursor: pointer; 
-            transition: transform 0.3s ease; 
-        }
