@@ -18,5 +18,5 @@ const categorias = [
         nombre: 'Establecimiento'
     }
 ]
-
+//Router 
 export default categorias
