@@ -2,14 +2,14 @@ extends ../layout/index
 
 block contenido
     div.py-10
-        h1.text-center.font-extrabold.my-10.text-4xl.text-pigmentgreen Bienes 
+        h1.text-center.font-foco.my-10.text-4xl.text-darkblue Bienes 
             span.font-normal.text-black Raíces
-        h2.text-center.font-extrabold.text-2xl.text-black= page
+        h2.text-center.font-rubi.text-2xl.text-black= page
 
     div(class="bg-white shadow py-8 px-4 rounded-lg max-w-md mx-auto")
-        p(class=error ? 'bg-redd' : 'bg-celadon').py-2.px-5.rounded-lg.w-full.font-bold.text-center.text-white.uppercase= mensaje
+        p(class=error ? 'bg-darkblue' : 'bg-babyblue').py-2.px-5.rounded-lg.w-full.font-rubi.text-center.text-white.uppercase= mensaje
 
         if !error
-            a(href="/auth/login" class="text-center font-bold text-sm text-slate-600 uppercase mt-10 block") Ya Puedes Iniciar Sesión
+            a(href="/auth/login" class="text-center font-foco text-sm text-slate-600 uppercase mt-10 block") Ya Puedes Iniciar Sesión
         else 
-            a(href="/auth/registro" class="text-center font-bold text-sm text-slate-600 uppercase mt-10 block") Ocurrio un Error, Intenta de Nuevo...
+            a(href="/auth/registro" class="text-center font-foco text-sm text-slate-600 uppercase mt-10 block") Ocurrio un Error, Intenta de Nuevo...
