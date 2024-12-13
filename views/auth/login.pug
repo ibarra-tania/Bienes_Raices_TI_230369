@@ -6,6 +6,7 @@ block contenido
             span.font-normal.text-black Raíces  
         h2.text-center.text-2xl.font-foco= pagina
 
+
         if errores
             div(class="max-w-md mx-auto my-6 space-y-3")
                 each error, index in errores
@@ -34,6 +35,7 @@ block contenido
             .bg-white.py-8.px-4.shadow
                 form.space-y-5( method="POST" action="/auth/login") 
                     input(type="hidden" name="_csrf" value= csrfToken)
+                    
                     div 
                         label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="email") Email
                         input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Escribe tu email" type="email" name="email") 
