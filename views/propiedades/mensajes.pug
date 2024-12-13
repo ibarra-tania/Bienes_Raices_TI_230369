@@ -1,6 +1,7 @@
 extends ../layout/admin 
 
 block contenido
+
     h2(class="text-2xl font-foco text-center my-10")= pagina
 
     a(href="/mis-propiedades" class="rounded py-2 px-10 bg-darkblue hover:bg-babyblue text-sm font-rubi text-center text-white uppercase my-5 inline-block w-full sm:w-auto") Volver
@@ -10,6 +11,7 @@ block contenido
             ul(class="divide-y divide-gray-200")
                 each mensaje in mensajes
                     li(class="flex items-start space-x-4 py-4")
+
                         if mensaje.usuario && mensaje.usuario.foto
                             img(class="w-10 h-10 rounded-full object-cover" src=`/uploads/${mensaje.usuario.foto}` alt=`Avatar de ${mensaje.usuario.nombre}`)
                         else
@@ -34,4 +36,5 @@ block contenido
                                     textarea(name="respuesta" class="w-full p-2 border rounded" placeholder="Escribe una respuesta...") 
                                     button(type="submit" class="bg-darkblue hover:bg-babyblue text-white rounded py-2 px-4 mt-2") Responder
         else 
+
             p(class="text-center text-gray-600 p-5") No hay Mensajes
