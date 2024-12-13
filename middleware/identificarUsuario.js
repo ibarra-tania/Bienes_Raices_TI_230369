@@ -29,6 +29,7 @@ const identificarUsuario = async (req, res, next) => {
 
         return next();
 
+        
     } catch (error) {
         console.log("Error al verificar token:", error);
         return res.clearCookie('_token').redirect('/auth/login');
