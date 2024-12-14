@@ -24,8 +24,8 @@ const emailRegistro = async (datos) => {
         <h3>Confirmación de correo</h3>
       </header>
       <div style="font-family: bold, sans-serif; text-align: justify; line-height: 1.6; color: #333; background-color: #f9f9f9; padding: 25px; border: 10px solid #ddd; border-radius: 5px;">
-        <h2 style="color: #50c878;">¡Hola, <span style="color: #50c878;">${nombre}</span>!</h2>
-        <div style="padding: 35px; border: dashed #50c878; border-radius: 30px;">
+        <h2 style="color: #55738D;">¡Hola, <span style="color: #55738D;">${nombre}</span>!</h2>
+        <div style="padding: 35px; border: dashed #55738D; border-radius: 30px;">
           <p style="font-size: 18px;">
             ¡Gracias por registrarte en <strong>BienesRaices.com</strong>! Para completar el proceso de confirmación de tu cuenta, necesitamos que confirmes tu correo electrónico.
           </p>
@@ -34,8 +34,8 @@ const emailRegistro = async (datos) => {
               Haz clic en el botón de abajo para confirmar tu cuenta:
             </p>
             <div style="text-align: center; margin: 20px 0;">
-              <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/confirmar/${token}"
-                 style="background-color: #50c878; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+              <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3001}/auth/confirmar/${token}"
+                 style="background-color: #55738D; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
                  Confirmar Cuenta
               </a>
             </div>
@@ -76,8 +76,8 @@ const emailOlvidePassword = async (datos) => {
         <h3>Recuperación de contraseña</h3>
       </header>
       <div style="font-family: bold, sans-serif; text-align: justify; line-height: 1.6; color: #333; background-color: #f9f9f9; padding: 25px; border: 10px solid #ddd; border-radius: 5px;">
-        <h2 style="color: #50c878;">¡Hola, <span style="color: #50c878;">${nombre}</span>!</h2>
-        <div style="padding: 35px; border: dashed #50c878; border-radius: 30px;">
+        <h2 style="color: #55738D;">¡Hola, <span style="color: #55738D;">${nombre}</span>!</h2>
+        <div style="padding: 35px; border: dashed #55738D; border-radius: 30px;">
           <p style="font-size: 18px;">
             Hemos recibido una solicitud para restablecer la contraseña de tu cuenta en <strong>BienesRaices.com</strong>.
           </p>
@@ -86,8 +86,8 @@ const emailOlvidePassword = async (datos) => {
               Haz clic en el botón de abajo para restablecer tu contraseña:
             </p>
             <div style="text-align: center; margin: 20px 0;">
-              <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/olvide-password/${token}"
-                 style="background-color: #50c878; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+              <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3001}/auth/olvide-password/${token}"
+                 style="background-color: #55738D; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
                  Restablecer Contraseña
               </a>
             </div>
@@ -102,6 +102,6 @@ const emailOlvidePassword = async (datos) => {
       </footer>
     `
   });
-};
+}
 
 export { emailRegistro, emailOlvidePassword };
