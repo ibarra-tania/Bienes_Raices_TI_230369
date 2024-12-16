@@ -464,6 +464,7 @@ const verMensajes = async (req, res) => {
         csrfToken: req.csrfToken()
     });
 }
+
 const responderMensaje = async (req, res) => {
     const { id } = req.params;
     const { respuesta } = req.body;
@@ -491,6 +492,8 @@ const responderMensaje = async (req, res) => {
         res.status(500).send('Error al guardar la respuesta.');
     }
 };
+
+
 
 export {
     admin,

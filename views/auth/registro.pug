@@ -2,8 +2,8 @@ extends ../layout/index
 
 block contenido
     div.py-10
-        h1.text-center.font-foco.my-10.text-4xl.text-darkblue Bienes 
-            span.font-normal.text-black Raíces
+        h1.text-center.font-foco.my-10.text-4xl.text-white Bienes 
+            span.font-normal.text-white Raíces
         h2.text-center.font-rubi.text-2xl.text-black= page
 
         if errores
@@ -31,27 +31,27 @@ block contenido
                         }, 1000);
 
         .mt-8.mx-auto.max-w-md
-            .bg-white.py-8.px-4.shadow
+            .bg-white.py-8.px-4.border-2.border-babygray.shadow
                 form(method="POST" action="/auth/registro" noValidate).space-y-5.px-6
                     input(type="hidden" name="_csrf" value= csrfToken)
                     div
-                        label.block.text-sm.uppercase.text-black.mb-2.font-foco Nombre Completo: 
-                        input#name.w-full.px-3.py-2.border-2.border-black.rounded-md(type="text" placeholder="Ej. Juanito Peréz" name="nombre" value=(usuario && usuario.nombre ? usuario.nombre : ""))
+                        label.block.text-sm.uppercase.text-darkblue.mb-2.font-foco Nombre Completo: 
+                        input#name.w-full.px-3.py-2.border-2.border-babygray.rounded-md(type="text" placeholder="Ej. Juanito Peréz" name="nombre" value=(usuario && usuario.nombre ? usuario.nombre : ""))
                     div
-                        label.block.text-sm.uppercase.text-black.mb-2.font-foco User: 
-                        input#alias.w-full.px-3.py-2.border-2.border-black.rounded-md(type="text" placeholder="Ej. juanperez123" name="alias" value=(usuario && usuario.alias ? usuario.alias : ""))
+                        label.block.text-sm.uppercase.text-darkblue.mb-2.font-foco Alias: 
+                        input#alias.w-full.px-3.py-2.border-2.border-babygray.rounded-md(type="text" placeholder="Ej. juanperez123" name="alias" value=(usuario && usuario.alias ? usuario.alias : ""))
                     div
-                        label.block.text-sm.uppercase.text-gray-500.mb-2.font-foco Email de Registro: 
-                        input#email.w-full.px-3.py-2.border-2.border-black.rounded-md(type="email" placeholder="Ej. usuario@paisdelasmaravillas.com" name="email" value=(usuario && usuario.email ? usuario.email : ""))
+                        label.block.text-sm.uppercase.text-darkblue.mb-2.font-foco Email de Registro: 
+                        input#email.w-full.px-3.py-2.border-2.border-babygray.rounded-md(type="email" placeholder="Ej. usuario@paisdelasmaravillas.com" name="email" value=(usuario && usuario.email ? usuario.email : ""))
                     div
-                        label.block.text-sm.uppercase.text-black.mb-2.font-foco Fecha de Nacimiento: 
-                        input#birthdate.w-full.px-3.py-2.border-2.border-black.rounded-md(type="date" name="fecha_nacimiento" value=(usuario && usuario.fecha_nacimiento ? usuario.fecha_nacimiento : ""))
+                        label.block.text-sm.uppercase.text-darkblue.mb-2.font-foco Fecha de Nacimiento: 
+                        input#birthdate.w-full.px-3.py-2.border-2.border-babygray.rounded-md(type="date" name="fecha_nacimiento" value=(usuario && usuario.fecha_nacimiento ? usuario.fecha_nacimiento : ""))
                     div
-                        label.block.text-sm.uppercase.text-black.mb-2.font-foco Contraseña: 
-                        input#password.w-full.px-3.py-2.border-2.border-black.rounded-md(type="password" placeholder="Minimo de 8 caracteres" name="password")
+                        label.block.text-sm.uppercase.text-darkblue.mb-2.font-foco Contraseña: 
+                        input#password.w-full.px-3.py-2.border-2.border-babygray.rounded-md(type="password" placeholder="Minimo de 8 caracteres" name="password")
                     div
-                        label.block.text-sm.uppercase.text-black.mb-2.font-foco Confirmar Contraseña: 
-                        input#password2.w-full.px-3.py-2.border-2.border-black.rounded-md(type="password" placeholder="Minimo de 8 caracteres" name="repetir_password")
+                        label.block.text-sm.uppercase.text-darkblue.mb-2.font-foco Confirmar Contraseña: 
+                        input#password2.w-full.px-3.py-2.border-2.border-babygray.rounded-md(type="password" placeholder="Minimo de 8 caracteres" name="repetir_password")
                     div.flex.items-center.justify-between
                         a.text-gray-500.text-xs.font-foco(href="/auth/login" class="hover:underline decoration-2 hover:decoration-darkblue") ¿Ya tienes cuenta? Inicia Sesión
                         a.text-gray-500.text-xs.font-foco(href="/auth/olvide-password" class="hover:underline decoration-2 hover:decoration-darkblue") Recuperar Contraseña

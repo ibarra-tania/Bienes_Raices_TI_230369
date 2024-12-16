@@ -50,7 +50,7 @@ const Propiedad = db.define('propiedades', {
         defaultValue: false
     },
     operacion: { 
-        type: DataTypes.ENUM('venta', 'renta'),
+        type: DataTypes.ENUM('Venta', 'Renta'),
         allowNull: false,
     },
 

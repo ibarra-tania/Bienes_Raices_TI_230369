@@ -5,8 +5,8 @@ block styles
 
 block contenido
     div.py-10
-        h1.text-4xl.my-10.font-foco.text-center.text-darkblue Bienes 
-            span.font-normal.text-black Raíces  
+        h1.text-4xl.my-10.font-foco.text-center.text-white Bienes 
+            span.font-normal.text-white Raíces  
         h2.text-center.text-2xl.font-foco= pagina
 
         if errores
@@ -34,38 +34,37 @@ block contenido
                         }, 1000);
 
 
-        div(class="bg-babygray shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
+        div(class="bg-white border-2 border-babygray shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
             form.space-y-8(method="POST" action="/propiedades/crear")
                 input(type="hidden" name="_csrf" value= csrfToken)
                 div.space-y-8
-                    h3.text-lg.leading-6.font-medium.text-gray-900 Información General
-                    p.text-gray-600 Añade Información sobre la propiedad en venta
+                    h3.text-lg.leading-6.font-foco.text-darkblue Información General
+                    p.text-babyblue.font-rubi Añade Información sobre la propiedad en venta
 
                     div 
-                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="titulo") Titulo de anuncio
-                        input#titulo.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Titulo Propiedad, ej. Casa en la Playa" type="text" name="titulo" value= datos.titulo ? datos.titulo : '') 
+                        label.block.text-sm.text-darkblue.mb-3.font-foco(for="titulo") Titulo de anuncio
+                        input#titulo.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-babygray(placeholder="Titulo Propiedad, ej. Casa en la Playa" type="text" name="titulo" value= datos.titulo ? datos.titulo : '') 
 
                     div
-                        label(for="descripcion", class="block text-sm uppercase text-gray-500 mb-3 font-foco") Descripcion
                         textarea#descripcion.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-babygray(placeholder="Descripcion de la propiedad" name="descripcion")= datos.descripcion ? datos.descripcion : ''
 
                     div(class="md:flex md:gap-4 space-y-5 md:space-y-0")
                         div(class="md:w-1/2") 
-                            label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="categoria") Categoria
+                            label.block.text-sm.text-darkblue.mb-3.font-foco(for="categoria") Categoria
                             select#categoria.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-babygray(name="categoria")     
                                 option(value="") - Seleccione -
                                 each categoria in categorias 
                                     option(value=categoria.id selected= datos.categoria ? datos.categoria == categoria.id ? true : false : null )= categoria.nombre
             
                         div(class="md:w-1/2") 
-                            label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="precio") Precio
+                            label.block.text-sm.text-darkblue.mb-3.font-foco(for="precio") Precio
                             select#precio.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(name="precio")     
                                 option(value="") - Seleccione -
                                 each precio in precios 
                                     option(value=precio.id selected= datos.precio ? datos.precio == precio.id ? true : false : null)= precio.nombre
                         
                         div(class="md:w-1/2") 
-                            label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="operacion") Operación
+                            label.block.text-sm.text-darkblue.mb-3.font-foco(for="operacion") Estado
                             select#operacion.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(name="operacion")     
                                 option(value="") - Seleccione -
                                 option(value="venta" selected= datos.operacion == 'venta' ? true : false) Venta
@@ -73,7 +72,7 @@ block contenido
 
                     div(class="md:flex md:gap-4 space-y-5 md:space-y-0")
                         div(class="md:w-1/3") 
-                            label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="habitaciones") Habitaciones
+                            label.block.text-sm.text-darkblue.mb-3.font-foco(for="habitaciones") Habitaciones
                             select#habitaciones.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(name="habitaciones")     
                                 option(value="") - Seleccione -
                                 - var n = 0;
@@ -81,14 +80,14 @@ block contenido
                                     option(value=n selected= datos.habitaciones ? datos.habitaciones == n ? true : false : null) #{n++}
             
                         div(class="md:w-1/3") 
-                            label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="estacionamiento") Estacionamiento
+                            label.block.text-sm.text-darkblue.mb-3.font-foco(for="estacionamiento") Estacionamiento
                             select#estacionamiento.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(name="estacionamiento")     
                                 option(value="") - Seleccione -
                                 - var n = 0;
                                 while n < 5
                                     option(value=n selected= datos.estacionamiento ? datos.estacionamiento == n ? true : false : null) #{n++}
                         div(class="md:w-1/3") 
-                            label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="wc") WC
+                            label.block.text-sm.text-darkblue.mb-3.font-foco(for="wc") WC
                             select#wc.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(name="wc")     
                                 option(value="") - Seleccione -
                                 - var n = 0;
@@ -96,8 +95,8 @@ block contenido
                                     option(value=n selected= datos.wc ? datos.wc == n ? true : false : null) #{n++}
 
                     div.border-gray-200.border-t.py-5.space-y-5
-                        h3.text-lg.leading-6.font-foco.text-babygray Ubicación
-                        p.text-babygray Ubica la propiedad en el mapa                
+                        h3.text-lg.leading-6.font-foco.text-black.text-center Ubicación
+                        p.text-babyblue.text-center.font-rubi Ubica la propiedad en el mapa                
                         #mapa.h-96  
 
                         div 
@@ -107,7 +106,7 @@ block contenido
                         input(type="hidden" name="lat" id="lat" value= datos.lat ? datos.lat : '')
                         input(type="hidden" name="lng" id="lng" value= datos.lng ? datos.lng : '')
 
-                        input(class="w-full transition ease-in-out delay-150 bg-darkblue hover:-translate-y-1 hover:scale-105 hover:bg-babyblue duration-300 text-white font-bold py-3 rounded-lg cursor-pointer transition duration-300" type="submit" value="Crear propiedad")    
+                        input(class="w-full transition ease-in-out delay-150 bg-darkblue hover:-translate-y-1 hover:scale-105 hover:bg-babyblue duration-300 text-white font-rubi py-3 rounded-lg cursor-pointer transition duration-300" type="submit" value="Crear propiedad")    
     
 
 block scripts 

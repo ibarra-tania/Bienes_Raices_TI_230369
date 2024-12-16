@@ -1,16 +1,16 @@
 header.bg-babyblue-100.p-4 
     .container.mx-auto.flex.justify-between.items-center 
-        h1.text-2xl.text-white.font-foco.text-center Bienes 
+        h1.text-2xl.text-black.font-foco.text-center Bienes 
             span.font-foco.text-black Raíces
 
         nav(class="my-5 text-sm md:flex md:items-center md:gap-3 font-rubi text-white hidden") 
-            a.text-gray-500.text-sm(href="javascript:history.back()" class="bg-babyblue hover:bg-darkblue text-white py-2 px-6 rounded-lg") Regresar
-            a(href="/" class="bg-babyblue hover:bg-darkblue rounded-lg text-white uppercase font-rubi p-2 cursor-pointer text-sm") Inicio
-            a(href="/mis-propiedades" class="bg-babyblue hover:bg-darkblue rounded-lg text-white uppercase font-rubi p-2 cursor-pointer text-sm") Mis propiedades 
+            a(href="javascript:history.back()" class="bg-darkblue hover:bg-babyblue text-white font-rubi uppercase py-2 px-6 rounded-lg") Regresar
+            a(href="/" class="bg-darkblue hover:bg-babyblue rounded-lg text-white uppercase font-rubi p-2 cursor-pointer text-sm") Inicio
+            a(href="/mis-propiedades" class="bg-darkblue hover:bg-babyblue rounded-lg text-white uppercase font-rubi p-2 cursor-pointer text-sm") Mis propiedades 
             if usuario
-               a(href=`/usuario/${usuario.id}` class="bg-babyblue hover:bg-darkblue rounded-lg text-white uppercase font-rubi p-2 cursor-pointer text-sm") Mi perfil
+               a(href=`/usuario/${usuario.id}` class="bg-darkblue hover:bg-babyblue rounded-lg text-white uppercase font-rubi p-2 cursor-pointer text-sm") Mi perfil
             else
                 a(href="/auth/login" class="bg-babyblue hover:bg-darkblue rounded-lg text-white uppercase font-rubi p-2 cursor-pointer text-sm") Iniciar Sesión
             form(action="/auth/cerrar-sesion" method="POST")  
                 input(type="hidden" name="_csrf" value= csrfToken)
-                input(class="w-full transition ease-in-out delay-150 bg-darkblue hover:-translate-y-1 hover:scale-105 hover:bg-babyblue duration-300 text-white font-bold py-3 rounded-lg cursor-pointer transition duration-300" type="submit" value="Cerrar Sesión")
+                input(class="w-full transition ease-in-out delay-150 bg-darkblue hover:-translate-y-1 hover:scale-105 hover:bg-babyblue duration-300 text-white font-rubi py-2 rounded-lg cursor-pointer transition duration-300" type="submit" value="Cerrar Sesión")

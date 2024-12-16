@@ -8,7 +8,7 @@ const Mensaje = db.define('mensajes', {
    },
    respuesta: { 
       type: DataTypes.STRING(200), 
-      allowNull: true, }
+      allowNull: false, }
       ,
 
 });

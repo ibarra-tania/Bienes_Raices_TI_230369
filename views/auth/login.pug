@@ -2,8 +2,8 @@ extends ../layout/index
 
 block contenido
     div.py-10
-        h1.text-4xl.my-10.font-foco.text-center.text-darkblue Bienes 
-            span.font-normal.text-black Raíces  
+        h1.text-4xl.my-10.font-foco.text-center.text-white Bienes 
+            span.font-normal.text-white Raíces  
         h2.text-center.text-2xl.font-foco= pagina
 
 
@@ -32,7 +32,7 @@ block contenido
                         }, 1000);
 
         .mt-8.mx-auto.max-w-md 
-            .bg-white.py-8.px-4.shadow
+            .bg-white.py-8.px-4.border-2.border-babygray.shadow
                 form.space-y-5( method="POST" action="/auth/login") 
                     input(type="hidden" name="_csrf" value= csrfToken)
                     
@@ -43,8 +43,8 @@ block contenido
                         label.block.text-sm.uppercase.text-gray-500.mb-3.font-foco(for="password") Password
                         input#password.w-full.px-3.py-2.border.border-babyblue.rounded-md.placeholder-gray-400(placeholder="Escribe tu password" type="password" name="password")             
                     div.flex.items-center.justify-between 
-                        a.text-gray-500.text-xs.font-foco(href="/auth/registro") ¿No tienes cuenta? Crea una
-                        a.text-gray-500.text-xs.font-foco(href="/auth/olvide-password") Olvide mi Password
+                        a.text-gray-500.text-xs.font-foco(href="/auth/registro" class="hover:underline decoration-2 hover:decoration-darkblue") ¿No tienes cuenta? Crea una
+                        a.text-gray-500.text-xs.font-foco(href="/auth/olvide-password" class="hover:underline decoration-2 hover:decoration-darkblue") Olvide mi Password
 
 
                     input(class="w-full transition ease-in-out delay-150 bg-darkblue hover:-translate-y-1 hover:scale-105 hover:bg-babyblue duration-300 text-white font-bold py-3 rounded-lg cursor-pointer transition duration-300" type="submit" value="Iniciar sesión")    
